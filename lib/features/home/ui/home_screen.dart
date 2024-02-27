@@ -4,7 +4,7 @@ import 'package:app_salud/core/states/custom_state.dart';
 import 'package:app_salud/features/home/provider/home_provider.dart';
 import 'package:app_salud/features/home/ui/widgets/app_bar.dart';
 import 'package:app_salud/features/home/ui/widgets/cards.dart';
-import 'package:app_salud/features/steps/models/steps.dart';
+import 'package:app_salud/features/home/models/steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -67,10 +67,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   const SizedBox(height: 30),
                   CardHome(
                     onPress: () => onPressed(
-                        context: context,
-                        goal: userHealth.stepsGoal,
-                        counter: userHealth.stepsCounter,
-                        title: 'Steps'),
+                      context: context,
+                      goal: userHealth.stepsGoal,
+                      counter: userHealth.stepsCounter,
+                      title: 'Steps',
+                      colorCard: ColorConstants.yellow,
+                      imgPath: 'assets/img/steps_counter.png',
+                    ),
                     coutner: userHealth.stepsCounter,
                     goals: userHealth.stepsGoal,
                     title: 'Steps',
@@ -80,7 +83,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       animation: true,
                       lineHeight: 15.0,
                       animationDuration: 2000,
-                      percent: userHealth.caloriesCounter / userHealth.caloriesGoal,
+                      percent: userHealth.stepsCounter / userHealth.stepsGoal,
                       barRadius: const Radius.circular(20),
                       progressColor: ColorConstants.primary,
                     ),
@@ -174,12 +177,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     required int counter,
     required int goal,
     required String title,
+    required Color colorCard,
+    required String imgPath,
   }) {
-    Navigator.pushNamed(context, '/steps',
+    Navigator.pushNamed(context, '/detail',
         arguments: Steps(
           counter: counter,
           goal: goal,
           title: title,
+          colorCard: colorCard,
+          pathImg: imgPath,
         ));
   }
 }

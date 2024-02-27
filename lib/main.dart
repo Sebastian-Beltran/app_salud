@@ -1,5 +1,5 @@
+import 'package:app_salud/features/home/ui/detail_screen.dart';
 import 'package:app_salud/features/home/ui/home_screen.dart';
-import 'package:app_salud/features/steps/ui/steps_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/home': (context) => const HomeScreen(),
-        '/steps': (context) => const StepsScreen(),
+        '/detail': (context) => const DetailsScreen(),
       },
     );
   }
