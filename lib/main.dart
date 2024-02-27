@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'App salud',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
             backgroundColor: Color(0xFF213544),
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         scaffoldBackgroundColor: const Color(0xFF213544),
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         useMaterial3: true,
       ),
       home: const HomeScreen(),
