@@ -9,4 +9,4 @@ Backend con informacion de salud del usuario (https://fitness-backend-8iy6.onren
 
 ## Arquitectura del App
 
-
+[Enlace de la Arquitectura](https://github.com/Sebastian-Beltran/app_salud/blob/main/assets/architecture/architecture.pdf)
