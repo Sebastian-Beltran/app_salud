@@ -1,3 +1,4 @@
+import 'package:app_salud/core/constants/color_contats.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -22,7 +23,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(50),
             ),
-            child: const Icon(Icons.apps),
+            child: Icon(
+              Icons.apps,
+              color: ColorConstants.primary,
+            ),
           ),
           ClipRRect(
             borderRadius: BorderRadius.circular(50),

@@ -1,4 +1,5 @@
 import 'package:app_salud/features/home/ui/home_screen.dart';
+import 'package:app_salud/features/steps/ui/steps_screen.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,8 +19,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF213544),
-        ),
+            backgroundColor: Color(0xFF213544),
+            iconTheme: IconThemeData(
+              color: Colors.white,
+            )),
         textTheme: const TextTheme(
           bodyMedium: TextStyle(
             fontSize: 20,
@@ -32,6 +35,10 @@ class MyApp extends StatelessWidget {
       ),
       home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/home': (context) => const HomeScreen(),
+        '/steps': (context) => const StepsScreen(),
+      },
     );
   }
 }

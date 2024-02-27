@@ -4,6 +4,7 @@ import 'package:app_salud/core/states/custom_state.dart';
 import 'package:app_salud/features/home/provider/home_provider.dart';
 import 'package:app_salud/features/home/ui/widgets/app_bar.dart';
 import 'package:app_salud/features/home/ui/widgets/cards.dart';
+import 'package:app_salud/features/steps/models/steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -65,6 +66,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   const SizedBox(height: 30),
                   CardHome(
+                    onPress: () => onPressed(
+                        context: context,
+                        goal: userHealth.stepsGoal,
+                        counter: userHealth.stepsCounter,
+                        title: 'Steps'),
                     coutner: userHealth.stepsCounter,
                     goals: userHealth.stepsGoal,
                     title: 'Steps',
@@ -111,9 +117,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             animation: true,
                             radius: 50,
                             lineWidth: 15.0,
+                            animationDuration: 2000,
                             percent: userHealth.waterCounter / 10,
                             center: Text(
-                                "${((userHealth.waterCounter / userHealth.waterGoal) * 100).round()} %"),
+                              "${((userHealth.waterCounter / userHealth.waterGoal) * 100).round()}%",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: ColorConstants.primary,
+                              ),
+                            ),
                             progressColor: ColorConstants.primary,
                           ),
                           pathImg: 'assets/img/water_glass.png',
@@ -154,6 +166,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
           ),
+        ));
+  }
+
+  void onPressed({
+    required BuildContext context,
+    required int counter,
+    required int goal,
+    required String title,
+  }) {
+    Navigator.pushNamed(context, '/steps',
+        arguments: Steps(
+          counter: counter,
+          goal: goal,
+          title: title,
         ));
   }
 }
