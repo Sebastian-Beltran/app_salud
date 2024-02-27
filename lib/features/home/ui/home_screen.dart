@@ -1,5 +1,4 @@
-import 'package:app_salud/core/constants/color_contats.dart';
-import 'package:app_salud/core/constants/constants.dart';
+import 'package:app_salud/core/constants/color_constats.dart';
 import 'package:app_salud/core/states/custom_state.dart';
 import 'package:app_salud/features/home/provider/home_provider.dart';
 import 'package:app_salud/features/home/ui/widgets/app_bar.dart';
@@ -20,10 +19,9 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (_) => ref.read(homeProvider.notifier).getInformationUser(userId: Constants.userId),
-    );
-
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(homeProvider.notifier).getData();
+    });
     super.initState();
   }
 

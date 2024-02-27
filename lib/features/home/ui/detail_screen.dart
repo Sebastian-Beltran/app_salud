@@ -1,4 +1,4 @@
-import 'package:app_salud/core/constants/color_contats.dart';
+import 'package:app_salud/core/constants/color_constats.dart';
 import 'package:app_salud/features/home/ui/widgets/app_bar.dart';
 import 'package:app_salud/features/home/ui/widgets/cards.dart';
 import 'package:app_salud/features/home/models/steps.dart';

@@ -1,4 +1,4 @@
-import 'package:app_salud/core/constants/color_contats.dart';
+import 'package:app_salud/core/constants/color_constats.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
