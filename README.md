@@ -1,18 +1,12 @@
-# app_salud
+# App prueba tecnica Seniority
 
-A new Flutter project.
+Aplicación movil en Flutter que muestra indicadores de salud entregados por backend.
 
-## Getting Started
+## Informacion
 
-Use img in www.flaticon.es
+Recuersos graficos como iconos salieron de (https://www.flaticon.es)
+Backend con informacion de salud del usuario (https://fitness-backend-8iy6.onrender.com/docs#/default/read_root__get)
 
-This project is a starting point for a Flutter application.
+## Arquitectura del App
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

@@ -42,6 +42,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               data: (userHealth) => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  const SizedBox(height: 30),
                   Text.rich(
                     TextSpan(
                       children: [
