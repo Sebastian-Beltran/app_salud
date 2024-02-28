@@ -35,6 +35,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: 40,
               height: 40,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: ColorConstants.red,
+                    borderRadius: BorderRadius.circular(50),
+                  ),
+                  child: Center(
+                      child: Text(
+                    "S",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: ColorConstants.primary,
+                      fontSize: 24,
+                    ),
+                  )),
+                );
+              },
             ),
           ),
         ],

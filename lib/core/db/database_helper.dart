@@ -4,7 +4,6 @@ import 'package:app_salud/core/constants/box_constants.dart';
 import 'package:app_salud/features/home/models/user_health.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'dart:convert' as convert;
 
 final dbHelperProvider = Provider<DataBaseHelper>((_) => DataBaseHelperImpl());
 
@@ -23,8 +22,12 @@ class DataBaseHelperImpl implements DataBaseHelper {
       final box = await openBox(boxName: boxName);
       final res = await box.get(key);
       print(res);
-      final data = await convert.jsonDecode(res.toString()) as Map<String, dynamic>;
-      return UserHealth.fromJson(data);
+      res as Map<dynamic, dynamic>;
+      Map<String, dynamic> mapStringDynamic = res.map((key, value) {
+        return MapEntry(key.toString(), value);
+      });
+      print(mapStringDynamic);
+      return UserHealth.fromJson(mapStringDynamic);
     } catch (e) {
       rethrow;
     }
