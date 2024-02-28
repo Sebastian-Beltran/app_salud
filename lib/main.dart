@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: {
         '/home': (context) => const HomeScreen(),
-        '/detail': (context) => const DetailsScreen(),
+        '/detail': (context) => DetailsScreen(),
       },
     );
   }

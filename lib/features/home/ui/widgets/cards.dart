@@ -25,6 +25,7 @@ class CardHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onPress,
       child: Card(
@@ -63,6 +64,7 @@ class CardHome extends StatelessWidget {
                         title,
                         style: TextStyle(
                           color: ColorConstants.primary,
+                          fontSize: size * 0.04,
                         ),
                       ),
                       if (goals != null && coutner != null)

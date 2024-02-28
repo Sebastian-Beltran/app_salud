@@ -1,4 +1,3 @@
-import 'package:app_salud/core/constants/constants.dart';
 import 'package:app_salud/core/states/custom_state.dart';
 import 'package:app_salud/features/home/provider/home_state.dart';
 import 'package:app_salud/features/home/services/home_service.dart';
@@ -26,9 +25,11 @@ class HomeNotifier extends StateNotifier<HomeState> {
   Future<void> getInformationUser({required int userId}) async {
     state = state.copyWith(userHealth: const CustomState.loading());
     final res = await homeService.getInformationHealth(userId);
-    state = res.fold(
-      (left) => state.copyWith(userHealth: CustomState.failure(left)),
-      (right) => state.copyWith(
+    res.fold(
+      (left) async {
+        await getData();
+      },
+      (right) => state = state.copyWith(
         userHealth: CustomState.data(right),
       ),
     );
@@ -39,10 +40,9 @@ class HomeNotifier extends StateNotifier<HomeState> {
     final res = await homeService.getData();
     res.fold(
       (left) async {
-        await getInformationUser(userId: Constants.userId);
-        return state.copyWith(userHealth: CustomState.failure(left));
+        state = state.copyWith(userHealth: CustomState.failure(left));
       },
-      (right) => state.copyWith(
+      (right) => state = state.copyWith(
         userHealth: CustomState.data(right),
       ),
     );

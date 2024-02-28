@@ -22,7 +22,8 @@ class DataBaseHelperImpl implements DataBaseHelper {
     try {
       final box = await openBox(boxName: boxName);
       final res = await box.get(key);
-      final data = await convert.jsonDecode(res.body.trim()) as Map<String, dynamic>;
+      print(res);
+      final data = await convert.jsonDecode(res.toString()) as Map<String, dynamic>;
       return UserHealth.fromJson(data);
     } catch (e) {
       rethrow;
