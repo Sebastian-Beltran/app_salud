@@ -17,13 +17,33 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> animation;
+
   @override
   void initState() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    )..repeat(reverse: true);
+
+    animation = Tween<double>(begin: 1.0, end: 1.2).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(homeProvider.notifier).getInformationUser(userId: Constants.userId);
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -140,26 +160,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           count: userHealth.heartRate,
                           title: 'Heart rate',
                           colorCard: ColorConstants.red,
-                          widget: Container(
-                            width: 95,
-                            height: 95,
-                            decoration: BoxDecoration(
-                                color: Colors.white.withOpacity(1),
-                                borderRadius: BorderRadius.circular(100),
-                                border: Border.all(
-                                  width: 20,
-                                  color: Colors.red.withOpacity(0.2),
-                                )),
-                            child: Transform.scale(
-                              scale: 0.4,
-                              child: Image.asset(
-                                'assets/img/heart_color.png',
-                                width: 40,
-                                height: 40,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
+                          widget: AnimatedBuilder(
+                              animation: animation,
+                              builder: (context, child) {
+                                return Transform.scale(
+                                  scale: animation.value,
+                                  child: Container(
+                                    width: 95,
+                                    height: 95,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white.withOpacity(1),
+                                        borderRadius: BorderRadius.circular(100),
+                                        border: Border.all(
+                                          width: 20,
+                                          color: Colors.red.withOpacity(0.2),
+                                        )),
+                                    child: Transform.scale(
+                                      scale: 0.4,
+                                      child: Image.asset(
+                                        'assets/img/heart_color.png',
+                                        width: 40,
+                                        height: 40,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }),
                           pathImg: 'assets/img/heart_outline.png',
                         ),
                       ),
